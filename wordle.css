@@ -1,0 +1,33 @@
+#pageHeader {
+    display: flex;
+    justify-content: center;
+}
+.row {
+    display: flex;
+    justify-content: center;
+}
+.tile {
+    width: 75px;
+    height: 75px;
+    border: 3px solid lightgrey;
+    margin: 3px;
+}
+.keyboard {
+    margin: 100px auto;
+}
+.key {
+    width: 50px;
+    height: 75px;
+    margin: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background-color: #d3d6da;
+    border-radius: 5px;
+}
+#enter {
+    width: 75px;
+}
+#backspace {
+    width: 75px;
+}

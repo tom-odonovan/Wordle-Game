@@ -9,6 +9,8 @@ const answerIndex = Math.floor(Math.random() * possibleWords.length + 1);
 const answer = possibleWords[answerIndex];
 console.log('Correct answer = ' + answer);
 
+
+// Adds Event listeners to each key on the on screen keyboard
 for (let keyElement of keys) {
     let key = keyElement.textContent;
 
@@ -27,14 +29,14 @@ for (let keyElement of keys) {
                 }
                 break;
             case '⌫':
-                    if (tileIndex >= 2) {
-                        guess = guess.substring(0, guess.length - 1);
-                        tileIndex--;
-                        let prevTile = document.getElementById(tileIndex);
-                        prevTile.innerText = '';
-                        prevTile.style.border = '3px solid lightgrey';
-                        console.log(tileIndex);
-                    }
+                if (tileIndex >= 2) {
+                    guess = guess.substring(0, guess.length - 1);
+                    tileIndex--;
+                    let prevTile = document.getElementById(tileIndex);
+                    prevTile.innerText = '';
+                    prevTile.style.border = '3px solid lightgrey';
+                    console.log(tileIndex);
+                }
                 break;
             default:
                 if (tileIndex !== 6) {
@@ -54,3 +56,36 @@ for (let keyElement of keys) {
 function checkWord(word) {
 
 }
+
+// Add event listener on keydown for physical keyboard functionallity
+document.addEventListener('keydown', (event) => {
+let tile = document.getElementById(tileIndex);
+    if (event.key >= 'a' && event.key <= 'z') { 
+        if (tileIndex !== 6) {
+            tileIndex++;
+            console.log(tileIndex);
+            tile.innerText = event.key.toUpperCase();
+            guess = guess + event.key.toLowerCase();
+            tile.style.border = '3px solid black';
+        }
+    } else if (event.key == 'Backspace'){
+        if (tileIndex >= 2) {
+            guess = guess.substring(0, guess.length - 1);
+            tileIndex--;
+            let prevTile = document.getElementById(tileIndex);
+            prevTile.innerText = '';
+            prevTile.style.border = '3px solid lightgrey';
+            console.log(tileIndex);
+        }
+    } else if (event.key == 'Enter'){
+        if (guess.length !== 5) {
+            alert('Please enter a 5 letter word');
+        } 
+        else if (!possibleWords.includes(guess)) {
+            alert('Please enter a valid word');
+        } else {
+            console.log('Guess: ' + guess);
+            checkWord(guess);
+        }
+    } 
+});

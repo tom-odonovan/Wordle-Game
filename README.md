@@ -17,4 +17,4 @@ Project 1 for General Assembly SEI
 
     3. When the user enters a 5 letter word and presses 'ENTER', the controller should invoke a 'checkWord()' function that firstly checks if the word is valid (i.e is included in the list of possible words) ✅ and secondly compares it to the correct answer. 
 
-        - Split the answer into an array of characters and compare each character to each corresponding tile. If they match - change the tile CSS to green. ✅ If the answer includes the tile but not at the correct index - change the tile CSS to yellow.
+        - Split the answer into an array of characters and compare each character to each corresponding tile. If they match - change the tile CSS to green. ✅ If the answer includes the tile but not at the correct index - change the tile CSS to yellow. ✅

@@ -11,7 +11,7 @@ console.log(`Correct answer = ${answer}`);
 
 // Split the word into an Array of characters (this will make it easier to iterate)
 let answerChars = answer.split('');
-console.log(`queerAnswer Chars = ${answerChars}`);
+console.log(`Answer Chars = ${answerChars}`);
 
 
 // Adds Event listeners to each key on the on screen keyboard
@@ -64,6 +64,10 @@ function checkWord() {
             if (tile.textContent.toLowerCase() === answerChars[c]){
                 tile.style.backgroundColor = '#6aaa64';
                 tile.style.border = '3px solid #6aaa64';
+                tile.style.color = 'white';
+            } else if (answer.includes(tile.textContent.toLowerCase())){
+                tile.style.backgroundColor = '#c9b458';
+                tile.style.border = '3px solid #c9b458';
                 tile.style.color = 'white';
             }
             tileIndex++;

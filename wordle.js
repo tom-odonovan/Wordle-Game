@@ -7,7 +7,11 @@ let guess = '';
 // Randomly select a word from array 'possible words'
 const answerIndex = Math.floor(Math.random() * possibleWords.length + 1);
 const answer = possibleWords[answerIndex];
-console.log('Correct answer = ' + answer);
+console.log(`Correct answer = ${answer}`);
+
+// Split the word into an Array of characters (this will make it easier to iterate)
+let answerChars = answer.split('');
+console.log(`queerAnswer Chars = ${answerChars}`);
 
 
 // Adds Event listeners to each key on the on screen keyboard
@@ -25,7 +29,7 @@ for (let keyElement of keys) {
                     alert('Please enter a valid word');
                 } else {
                     console.log('Guess: ' + guess);
-                    checkWord(guess);
+                    checkWord();
                 }
                 break;
             case '⌫':
@@ -41,7 +45,6 @@ for (let keyElement of keys) {
             default:
                 if (tileIndex !== 6) {
                     tileIndex++;
-                    console.log(tileIndex);
                     tile.innerText = key;
                     guess = guess + key.toLowerCase();
                    
@@ -53,7 +56,20 @@ for (let keyElement of keys) {
     });
 }
 
-function checkWord(word) {
+function checkWord() {
+    let tileIndex = 1;
+    for (c in answerChars) {
+        if (tileIndex < 6){
+            let tile = document.getElementById(tileIndex);
+            if (tile.textContent.toLowerCase() === answerChars[c]){
+                tile.style.backgroundColor = '#6aaa64';
+                tile.style.border = '3px solid #6aaa64';
+                tile.style.color = 'white';
+            }
+            tileIndex++;
+        }
+    }
+
 
 }
 
@@ -61,9 +77,8 @@ function checkWord(word) {
 document.addEventListener('keydown', (event) => {
 let tile = document.getElementById(tileIndex);
     if (event.key >= 'a' && event.key <= 'z') { 
-        if (tileIndex !== 6) {
+        if (tileIndex < 6) {
             tileIndex++;
-            console.log(tileIndex);
             tile.innerText = event.key.toUpperCase();
             guess = guess + event.key.toLowerCase();
             tile.style.border = '3px solid black';
@@ -75,7 +90,6 @@ let tile = document.getElementById(tileIndex);
             let prevTile = document.getElementById(tileIndex);
             prevTile.innerText = '';
             prevTile.style.border = '3px solid lightgrey';
-            console.log(tileIndex);
         }
     } else if (event.key == 'Enter'){
         if (guess.length !== 5) {

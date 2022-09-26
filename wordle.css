@@ -41,4 +41,6 @@ body {
 }
 #backspace {
     width: 75px;
+    font-size: 25px;
+    font-weight: lighter;
 }

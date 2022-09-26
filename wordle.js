@@ -69,6 +69,10 @@ function checkWord() {
                 tile.style.backgroundColor = '#c9b458';
                 tile.style.border = '3px solid #c9b458';
                 tile.style.color = 'white';
+            } else {
+                tile.style.backgroundColor = 'grey';
+                tile.style.border = '3px solid grey';
+                tile.style.color = 'white';
             }
             tileIndex++;
         }

@@ -20,10 +20,11 @@ for (let keyElement of keys) {
 
     keyElement.addEventListener('click', function () {
         let tile = document.getElementById(tileIndex);
+       
         switch (key) {
             case 'ENTER':
                 if (guess.length !== 5) {
-                     alert('Please enter a 5 letter word');
+                     alert(`'${guess}' is not a 5 letter word`);
                 } 
                 else if (!possibleWords.includes(guess)) {
                     alert('Please enter a valid word');
@@ -43,11 +44,10 @@ for (let keyElement of keys) {
                 }
                 break;
             default:
-                if (tileIndex !== 6) {
+                if (tileIndex % 6 !== 0) {
                     tileIndex++;
                     tile.innerText = key;
                     guess = guess + key.toLowerCase();
-                   
                     tile.style.border = '3px solid black';
                 } else {
                     
@@ -56,19 +56,23 @@ for (let keyElement of keys) {
     });
 }
 
+// Checks valid 5 letter word after the user clicks enter
 function checkWord() {
-    let tileIndex = 1;
+    tileIndex = tileIndex - 5;
     for (c in answerChars) {
-        if (tileIndex < 6){
+        if (tileIndex % 6 !== 0){
             let tile = document.getElementById(tileIndex);
+            // Check for green tiles
             if (tile.textContent.toLowerCase() === answerChars[c]){
                 tile.style.backgroundColor = '#6aaa64';
                 tile.style.border = '3px solid #6aaa64';
                 tile.style.color = 'white';
+            // Check for yellow tiles
             } else if (answer.includes(tile.textContent.toLowerCase())){
                 tile.style.backgroundColor = '#c9b458';
                 tile.style.border = '3px solid #c9b458';
                 tile.style.color = 'white';
+            // Grey out incorrect tiles
             } else {
                 tile.style.backgroundColor = 'grey';
                 tile.style.border = '3px solid grey';
@@ -76,6 +80,13 @@ function checkWord() {
             }
             tileIndex++;
         }
+    }
+    if (answer === guess) {
+        console.log('You Win!')
+    } else {
+        tileIndex++;
+        console.log(`Tile index: ${tileIndex}`);
+        guess = '';
     }
 
 
@@ -85,7 +96,7 @@ function checkWord() {
 document.addEventListener('keydown', (event) => {
 let tile = document.getElementById(tileIndex);
     if (event.key >= 'a' && event.key <= 'z') { 
-        if (tileIndex < 6) {
+        if (tileIndex % 6 !== 0) {
             tileIndex++;
             tile.innerText = event.key.toUpperCase();
             guess = guess + event.key.toLowerCase();
@@ -101,7 +112,7 @@ let tile = document.getElementById(tileIndex);
         }
     } else if (event.key == 'Enter'){
         if (guess.length !== 5) {
-            alert('Please enter a 5 letter word');
+            alert(`'${guess}' is not a 5 letter word`);
         } 
         else if (!possibleWords.includes(guess)) {
             alert('Please enter a valid word');

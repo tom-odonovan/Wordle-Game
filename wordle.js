@@ -65,6 +65,11 @@ let tile = document.getElementById(tileIndex);
             tile.innerText = event.key.toUpperCase();
             guess = guess + event.key.toLowerCase();
             tile.style.border = '3px solid black';
+            // Modify CSS to animate tiles as they are selected 
+            tile.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                tile.style.transform = 'scale(1)';
+            }, 50)
         }
     } else if (event.key == 'Backspace'){
         if (tileIndex >= 2) {
@@ -97,7 +102,6 @@ function checkWord() {
             // Grab text content of each tile and link it to the corresponding key
             let letter = tile.textContent.toLowerCase();
             let key = document.getElementById(letter);
-            console.log(letter);
             // Check for green tiles
             if (tile.textContent.toLowerCase() === answerChars[c]){
                 changeTileColor(tile, '#6aaa64');
@@ -108,8 +112,8 @@ function checkWord() {
                 changeKeyColor(key, '#c9b458');
             // Grey out incorrect tiles
             } else {
-                changeTileColor(tile, 'grey');
-                changeKeyColor(key, 'grey');
+                changeTileColor(tile, '#787c7e');
+                changeKeyColor(key, '#787c7e');
             }
             tileIndex++;
         }

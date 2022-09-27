@@ -27,8 +27,8 @@ Project 1 for General Assembly SEI
 
     5) Tiles that have been checked should have their corressponding letters on the keyboard coloured accordingly to alert the user which letters to include in subsequent quesses. ✅
 
-    -[ ] Add CSS animations 
-     1) When a tile is entered it should pop out and back slightly.
+- [ ] Add CSS animations 
+     1) When a tile is entered it should pop out and back slightly. ✅
 
 
     ### Glitches to fix:

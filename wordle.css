@@ -14,15 +14,21 @@ body {
     justify-content: center;
 }
 .tile {
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
     border: 3px solid lightgrey;
     margin: 3px;
     text-align: center;
-    line-height: 75px;
+    line-height: 70px;
     font-size: 35px;
     font-weight: bold;
+    transition: 0.05s ease;
 }
+@keyframes pulse {
+    0% {transform: scale(1)};
+    100% {transform: scale(1.1)};
+}
+
 .keyboard {
     margin: 100px auto;
 }

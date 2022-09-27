@@ -24,3 +24,13 @@ Project 1 for General Assembly SEI
     4) The user must only be able to type a maximum of 5 letters until the word has been checked by the 'checkWord' function. Once the first guess has been checked, allow user to commence 2nd guess. ✅
 
         - NOTE: This prooved to be quite the challenge. How could I stop the user from guessing until the word had been checked by the 'checkword' function? At first I gave each square a unique Id corresponding to its index. If the index was a factor of 6; stop play and checkWord (Notice none of the squares have an Id divisible by 6). After the word had been checked, +1 to the tileIndex i.e. resume play. 
+
+    5) Tiles that have been checked should have their corressponding letters on the keyboard coloured accordingly to alert the user which letters to include in subsequent quesses. ✅
+
+    -[ ] Add CSS animations 
+     1) When a tile is entered it should pop out and back slightly.
+
+
+    ### Glitches to fix:
+
+    - Restrict the user from being able to backspace previous rows

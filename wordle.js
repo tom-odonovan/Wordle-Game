@@ -56,42 +56,6 @@ for (let keyElement of keys) {
     });
 }
 
-// Checks valid 5 letter word after the user clicks enter
-function checkWord() {
-    tileIndex = tileIndex - 5;
-    for (c in answerChars) {
-        if (tileIndex % 6 !== 0){
-            let tile = document.getElementById(tileIndex);
-            // Check for green tiles
-            if (tile.textContent.toLowerCase() === answerChars[c]){
-                tile.style.backgroundColor = '#6aaa64';
-                tile.style.border = '3px solid #6aaa64';
-                tile.style.color = 'white';
-            // Check for yellow tiles
-            } else if (answer.includes(tile.textContent.toLowerCase())){
-                tile.style.backgroundColor = '#c9b458';
-                tile.style.border = '3px solid #c9b458';
-                tile.style.color = 'white';
-            // Grey out incorrect tiles
-            } else {
-                tile.style.backgroundColor = 'grey';
-                tile.style.border = '3px solid grey';
-                tile.style.color = 'white';
-            }
-            tileIndex++;
-        }
-    }
-    if (answer === guess) {
-        console.log('You Win!')
-    } else {
-        tileIndex++;
-        console.log(`Tile index: ${tileIndex}`);
-        guess = '';
-    }
-
-
-}
-
 // Add event listener on keydown for physical keyboard functionallity
 document.addEventListener('keydown', (event) => {
 let tile = document.getElementById(tileIndex);
@@ -122,3 +86,52 @@ let tile = document.getElementById(tileIndex);
         }
     } 
 });
+
+
+// Checks valid 5 letter word after the user clicks enter
+function checkWord() {
+    tileIndex = tileIndex - 5;
+    for (c in answerChars) {
+        if (tileIndex % 6 !== 0){
+            let tile = document.getElementById(tileIndex);
+            // Grab text content of each tile and link it to the corresponding key
+            let letter = tile.textContent.toLowerCase();
+            let key = document.getElementById(letter);
+            console.log(letter);
+            // Check for green tiles
+            if (tile.textContent.toLowerCase() === answerChars[c]){
+                changeTileColor(tile, '#6aaa64');
+                changeKeyColor(key, '#6aaa64');
+            // Check for yellow tiles
+            } else if (answer.includes(tile.textContent.toLowerCase())){
+                changeTileColor(tile, '#c9b458');
+                changeKeyColor(key, '#c9b458');
+            // Grey out incorrect tiles
+            } else {
+                changeTileColor(tile, 'grey');
+                changeKeyColor(key, 'grey');
+            }
+            tileIndex++;
+        }
+    }
+    if (answer === guess) {
+        console.log('You Win!')
+    } else {
+        tileIndex++;
+        console.log(`Tile index: ${tileIndex}`);
+        guess = '';
+    }
+}
+
+// Changes tile color
+function changeTileColor(tile, color) {
+    tile.style.backgroundColor = `${color}`;
+    tile.style.border = `3px solid ${color}`;
+    tile.style.color = 'white';
+}
+
+// Changes the color of specified key on keyboard
+function changeKeyColor(key, color) {
+    key.style.backgroundColor = `${color}`;
+    key.style.color = 'white';
+}

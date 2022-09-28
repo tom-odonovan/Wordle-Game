@@ -32,7 +32,9 @@ for (let keyElement of keys) {
                 } else {
                     console.log('Guess: ' + guess);
                     checkWord();
-                    rowIndex++;
+                    // Toggle class to animate keys as they are pressed
+                    let enter = document.getElementById('enter');
+                    enter.classList.toggle('press');
                 }
                 break;
             case '⌫':
@@ -43,6 +45,9 @@ for (let keyElement of keys) {
                     prevTile.innerText = '';
                     prevTile.style.border = '3px solid lightgrey';
                     console.log(tileIndex);
+                    // Toggle class to animate keys as they are pressed
+                    let backspace = document.getElementById('backspace');
+                    backspace.classList.toggle('press');
                 }
                 break;
             default:
@@ -51,6 +56,12 @@ for (let keyElement of keys) {
                     tile.innerText = key;
                     guess = guess + key.toLowerCase();
                     tile.style.border = '3px solid black';
+                    // Toggle class to animate tiles as they are selected 
+                    tile.classList.toggle('pulse');
+                    // Toggle class to animate keys as they are pressed
+                    let letter = tile.textContent.toLowerCase();
+                    let keys = document.getElementById(letter);
+                    keys.classList.toggle('press');
                 } else {
                     
                 }
@@ -68,10 +79,11 @@ let tile = document.getElementById(tileIndex);
             guess = guess + event.key.toLowerCase();
             tile.style.border = '3px solid black';
             // Modify CSS to animate tiles as they are selected 
-            tile.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                tile.style.transform = 'scale(1)';
-            }, 50)
+            tile.classList.toggle('pulse');
+            // Modify CSS to animate keys as they are pressed
+            let letter = tile.textContent.toLowerCase();
+            let key = document.getElementById(letter);
+            key.classList.toggle('press');
         }
     } else if (event.key == 'Backspace'){
         if (tileIndex >= 2) {
@@ -90,7 +102,6 @@ let tile = document.getElementById(tileIndex);
         } else {
             console.log('Guess: ' + guess);
             checkWord(guess);
-            rowIndex++;
         }
     } 
 });
@@ -103,7 +114,6 @@ function checkWord() {
     for (c in answerChars) {
         if (tileIndex % 6 !== 0){
             let tile = document.getElementById(tileIndex);
-            let row = document.getElementById(`row-${rowIndex}`)
             // Grab text content of each tile and link it to the corresponding key
             let letter = tile.textContent.toLowerCase();
             let key = document.getElementById(letter);
@@ -111,7 +121,10 @@ function checkWord() {
             if (tile.textContent.toLowerCase() === answerChars[c]){
                 flipTile(tile, '#6aaa64');
                 changeKeyColor(key, '#6aaa64');
-                tile.classList.toggle('spin');
+                // If player wins, toggle 'tile' class to initiate 'spin' animation
+                if (answer === guess) {
+                    tile.classList.toggle('spin');
+                }
             // Check for yellow tiles
             } else if (answer.includes(tile.textContent.toLowerCase())){
                 flipTile(tile, '#c9b458');

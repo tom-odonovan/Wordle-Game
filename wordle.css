@@ -22,19 +22,23 @@ body {
     line-height: 70px;
     font-size: 35px;
     font-weight: bold;
-    animation: pulse 0.05s ease;
-    
+}
+.pulse {
+    animation: pulse 0.1s ease;
 }
 @keyframes pulse {
     0% {
         transform: scale(1);
     }
-    100% {
+    50% {
         transform: scale(1.1);
+    }
+    100% {
+        transform: scale(0.9);
     }
 }
 .spin {
-    animation: spin 1s;
+    animation: spin 1s ease-in-out;
 }
 @keyframes spin {
     0% {
@@ -42,6 +46,25 @@ body {
     }
     100% {
         transform: rotate(720deg);
+    }
+}
+.press {
+    animation: press 0.2s;
+}
+@keyframes press {
+    0% {
+        transform: scale(1);
+        background-color: #d3d6da;
+    }
+    
+    50% {
+        transform: scale(0.9);
+        background-color: #c4c6cb;
+    }
+
+    100% {
+        transform: scale(1);
+        background-color: #d3d6da;
     }
 }
 

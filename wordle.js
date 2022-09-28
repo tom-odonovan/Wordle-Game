@@ -2,6 +2,7 @@ let possibleWords = ["aback", "abase", "abate", "abbey", "abbot", "abhor", "abid
 
 let keys = document.getElementsByClassName('key');
 let tileIndex = 1;
+let rowIndex = 1;
 let guess = '';
 
 // Randomly select a word from array 'possible words'
@@ -31,6 +32,7 @@ for (let keyElement of keys) {
                 } else {
                     console.log('Guess: ' + guess);
                     checkWord();
+                    rowIndex++;
                 }
                 break;
             case '⌫':
@@ -81,13 +83,14 @@ let tile = document.getElementById(tileIndex);
         }
     } else if (event.key == 'Enter'){
         if (guess.length !== 5) {
-            alert(`'${guess}' is not a 5 letter word`);
+            alert(`Please enter a 5 letter word`);
         } 
         else if (!possibleWords.includes(guess)) {
-            alert('Please enter a valid word');
+            alert(`'${guess}' is not a valid word`);
         } else {
             console.log('Guess: ' + guess);
             checkWord(guess);
+            rowIndex++;
         }
     } 
 });
@@ -96,30 +99,38 @@ let tile = document.getElementById(tileIndex);
 // Checks valid 5 letter word after the user clicks enter
 function checkWord() {
     tileIndex = tileIndex - 5;
+    
     for (c in answerChars) {
         if (tileIndex % 6 !== 0){
             let tile = document.getElementById(tileIndex);
+            let row = document.getElementById(`row-${rowIndex}`)
             // Grab text content of each tile and link it to the corresponding key
             let letter = tile.textContent.toLowerCase();
             let key = document.getElementById(letter);
             // Check for green tiles
             if (tile.textContent.toLowerCase() === answerChars[c]){
-                changeTileColor(tile, '#6aaa64');
+                flipTile(tile, '#6aaa64');
                 changeKeyColor(key, '#6aaa64');
+                tile.classList.toggle('spin');
             // Check for yellow tiles
             } else if (answer.includes(tile.textContent.toLowerCase())){
-                changeTileColor(tile, '#c9b458');
+                flipTile(tile, '#c9b458');
                 changeKeyColor(key, '#c9b458');
             // Grey out incorrect tiles
             } else {
-                changeTileColor(tile, '#787c7e');
+                flipTile(tile, '#787c7e');
                 changeKeyColor(key, '#787c7e');
             }
             tileIndex++;
         }
     }
     if (answer === guess) {
-        console.log('You Win!')
+        console.log("Guess = correct")
+        console.log("Player Wins!")
+        setTimeout(() => {
+        alert('You Win!')
+    }, 1000);
+        
     } else {
         tileIndex++;
         console.log(`Tile index: ${tileIndex}`);
@@ -138,4 +149,14 @@ function changeTileColor(tile, color) {
 function changeKeyColor(key, color) {
     key.style.backgroundColor = `${color}`;
     key.style.color = 'white';
+}
+
+// Flips tiles to reveal
+function flipTile(tile, color) {
+    tile.style.transition = '0.3s ease'
+    tile.style.transform = 'rotateX(90deg)';
+    setTimeout(() => {
+        tile.style.transform = 'rotateX(0deg)';
+        changeTileColor(tile, color);
+    }, 300);
 }

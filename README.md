@@ -29,6 +29,8 @@ Project 1 for General Assembly SEI
 
 - [ ] Add CSS animations 
      1) When a tile is entered it should pop out and back slightly. ✅
+     2) As tiles are checked by the 'checkWord' function, they should flip over vertically to reveal its color ✅
+     3) If the player wins i.e. guess = answer, the tiles should jump up in a wave formation (Edit: this task seems to be above my skill set atm - I've compromised to getting the tiles to spin around)✅
 
 
     ### Glitches to fix:

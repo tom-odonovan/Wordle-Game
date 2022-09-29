@@ -14,6 +14,7 @@ console.log(`Correct answer = ${answer}`);
 let answerChars = answer.split('');
 console.log(`Answer Chars = ${answerChars}`);
 
+// ---------------------- CONTROLLER ----------------------
 
 // Adds Event listeners to each key on the on screen keyboard
 for (let keyElement of keys) {
@@ -24,20 +25,23 @@ for (let keyElement of keys) {
        
         switch (key) {
             case 'ENTER':
+                // Toggle class to animate keys as they are pressed
+                let enter = document.getElementById('enter');
+                keyPress(enter);
                 if (guess.length !== 5) {
-                     alert(`'${guess}' is not a 5 letter word`);
+                    shakeTiles(guess, tileIndex);
                 } 
                 else if (!possibleWords.includes(guess)) {
-                    alert('Please enter a valid word');
+                    shakeTiles(guess, tileIndex);
                 } else {
                     console.log('Guess: ' + guess);
                     checkWord();
-                    // Toggle class to animate keys as they are pressed
-                    let enter = document.getElementById('enter');
-                    enter.classList.toggle('press');
                 }
                 break;
             case '⌫':
+                // Toggle class to animate keys as they are pressed
+                let backspace = document.getElementById('backspace');
+                keyPress(backspace);
                 if (tileIndex >= 2) {
                     guess = guess.substring(0, guess.length - 1);
                     tileIndex--;
@@ -45,9 +49,6 @@ for (let keyElement of keys) {
                     prevTile.innerText = '';
                     prevTile.style.border = '3px solid lightgrey';
                     console.log(tileIndex);
-                    // Toggle class to animate keys as they are pressed
-                    let backspace = document.getElementById('backspace');
-                    backspace.classList.toggle('press');
                 }
                 break;
             default:
@@ -57,11 +58,11 @@ for (let keyElement of keys) {
                     guess = guess + key.toLowerCase();
                     tile.style.border = '3px solid black';
                     // Toggle class to animate tiles as they are selected 
-                    tile.classList.toggle('pulse');
+                    pulseTile(tile);
                     // Toggle class to animate keys as they are pressed
                     let letter = tile.textContent.toLowerCase();
                     let keys = document.getElementById(letter);
-                    keys.classList.toggle('press');
+                    keyPress(keys);
                 } else {
                     
                 }
@@ -79,13 +80,16 @@ let tile = document.getElementById(tileIndex);
             guess = guess + event.key.toLowerCase();
             tile.style.border = '3px solid black';
             // Modify CSS to animate tiles as they are selected 
-            tile.classList.toggle('pulse');
+            pulseTile(tile);
             // Modify CSS to animate keys as they are pressed
             let letter = tile.textContent.toLowerCase();
             let key = document.getElementById(letter);
-            key.classList.toggle('press');
+            keyPress(key);
         }
     } else if (event.key == 'Backspace'){
+        // Toggle class to animate keys as they are pressed
+        let backspace = document.getElementById('backspace');
+        keyPress(backspace);
         if (tileIndex >= 2) {
             guess = guess.substring(0, guess.length - 1);
             tileIndex--;
@@ -94,11 +98,14 @@ let tile = document.getElementById(tileIndex);
             prevTile.style.border = '3px solid lightgrey';
         }
     } else if (event.key == 'Enter'){
+        // Toggle class to animate keys as they are pressed
+        let enter = document.getElementById('enter');
+        keyPress(enter);
         if (guess.length !== 5) {
-            alert(`Please enter a 5 letter word`);
+            shakeTiles(guess, tileIndex);
         } 
         else if (!possibleWords.includes(guess)) {
-            alert(`'${guess}' is not a valid word`);
+            shakeTiles(guess, tileIndex);
         } else {
             console.log('Guess: ' + guess);
             checkWord(guess);
@@ -164,12 +171,50 @@ function changeKeyColor(key, color) {
     key.style.color = 'white';
 }
 
+// -------------- Animations ---------------
+
+// Pulse tiles as they are selected 
+function pulseTile(tile){
+    tile.classList.add('pulse');
+    setTimeout(() => { 
+        tile.classList.remove('pulse');
+    }, 100);
+}
+
 // Flips tiles to reveal
 function flipTile(tile, color) {
-    tile.style.transition = '0.3s ease'
+    tile.style.transition = '0.3s ease-in-out'
     tile.style.transform = 'rotateX(90deg)';
     setTimeout(() => {
         tile.style.transform = 'rotateX(0deg)';
         changeTileColor(tile, color);
     }, 300);
+}
+
+// Invokes 'press' animation when keys are pressed
+function keyPress(key) {
+    key.classList.add('press');
+    setTimeout(() => { 
+        key.classList.remove('press');
+    }, 200);
+}
+
+// Shakes tiles if guess is invalid
+function shakeTiles(guess, tileIndex) {
+    tileIndex = tileIndex - guess.length;
+    for (let c of guess) {
+        let tile = document.getElementById(tileIndex);
+        tile.classList.add('shake');
+        setTimeout(() => { 
+            tile.classList.remove('shake');
+        }, 1000);
+        tileIndex++;
+    }
+    setTimeout(() => {
+        if (guess.length !== 5) {
+            alert(`Please enter a 5 letter word`);
+        } else {
+            alert(`'${guess}' is not a valid word`);
+        }
+    }, 1000);
 }

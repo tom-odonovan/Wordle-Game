@@ -32,6 +32,7 @@ Project 1 for General Assembly SEI
      - As tiles are checked by the 'checkWord' function, they should flip over vertically to reveal its color ✅
      - If the player wins i.e. guess = answer, the tiles should jump up in a wave formation (Edit: this task seems to be above my skill set atm - I've compromised to getting the tiles to spin around)✅
      - Animate keys to 'press' when pressed ✅
+     - If guess is invalid - shake tiles side to side
 
 - [ ] Define Logic for Win Senario
 
@@ -39,9 +40,30 @@ Project 1 for General Assembly SEI
     - Additionally, ask them if they would like to play again, or share their score.
     - Perhaps include a list of highscores? or additional gameplay data such as streaks.
 
+- [ ] Define Logic for Loose Senario
+
+    - If the player looses, i.e runs out of guesses - stop gameplay and alert the player that they have lost.
+    - Show game end screen/ highscores etc..
+
+- [ ] Create Welcome Page
+
+    - Upon loading the page, greet the user with into and rules of play
+
+### ----------- Wordle Replica Completed ----------------------------------------------------------
+
+- [ ] Experiment With Additional Rules
+    - Add Option for timer to increase difficulty
+    - 
+
+- [ ] Personalise Layout and Styling
+    - Add button to toggle 'Dark Mode'
+
      
 
 
     ### Glitches to fix:
 
     - Restrict the user from being able to backspace previous rows
+    - Animations don't always execute? - look into classList.toggle and @keyframes
+
+    ### Refactor/clean-up code

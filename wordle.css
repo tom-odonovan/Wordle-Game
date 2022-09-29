@@ -1,18 +1,22 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 #pageHeader {
     display: flex;
     justify-content: center;
     border-bottom: 1px solid lightgrey;
 }
+
 #gameContainer {
     margin-top: 100px;
 }
+
 .row {
     display: flex;
     justify-content: center;
 }
+
 .tile {
     width: 70px;
     height: 70px;
@@ -23,40 +27,49 @@ body {
     font-size: 35px;
     font-weight: bold;
 }
+
 .pulse {
     animation: pulse 0.1s ease;
 }
+
 @keyframes pulse {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.1);
     }
+
     100% {
         transform: scale(0.9);
     }
 }
+
 .spin {
     animation: spin 1s ease-in-out;
 }
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(720deg);
     }
 }
+
 .press {
     animation: press 0.2s;
 }
+
 @keyframes press {
     0% {
         transform: scale(1);
         background-color: #d3d6da;
     }
-    
+
     50% {
         transform: scale(0.9);
         background-color: #c4c6cb;
@@ -68,10 +81,47 @@ body {
     }
 }
 
+.shake {
+    position: relative;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0% {
+        left: 3px;
+    }
+
+    25% {
+        left: -6px;
+    }
+
+    40% {
+        left: 6px;
+    }
+
+    50% {
+        left: -6px;
+    }
+
+    60% {
+        left: 6px;
+    }
+
+    75% {
+        left: -6px;
+    }
+
+    100% {
+        left: 3px;
+    }
+
+}
+
 
 .keyboard {
     margin: 100px auto;
 }
+
 .key {
     width: 50px;
     height: 75px;
@@ -82,9 +132,11 @@ body {
     background-color: #d3d6da;
     border-radius: 5px;
 }
+
 #enter {
     width: 75px;
 }
+
 #backspace {
     width: 75px;
     font-size: 25px;

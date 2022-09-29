@@ -16,7 +16,7 @@ console.log(`Answer Chars = ${answerChars}`);
 
 loadTiles();
 setTimeout(() => { 
-    //renderIntro();
+    renderIntro();
 }, 1500);
 
 // ---------------------- CONTROLLER ----------------------
@@ -255,8 +255,53 @@ function shakeTiles(guess, tileIndex) {
 
 // ----------------- Pop-ups/Additional Screens -------------------
 
+// Renders Intro Card including Rules of Play
 function renderIntro() {
     let container = document.createElement('div');
     container.className = 'intro';
     document.body.appendChild(container);
+
+    let h1 = document.createElement('h1');
+    h1.className = 'intro-h1';
+    h1.textContent = 'Welcome to Wordle!'
+    container.appendChild(h1);
+
+    let h2 = document.createElement('h2');
+    h2.className = 'intro-h2';
+    h2.textContent = 'HOW TO PLAY:'
+    container.appendChild(h2);
+
+    let p1 = document.createElement('p');
+    p1.className = 'intro-p';
+    p1.innerHTML = 'Guess the <span>WORDLE</span> in less than 6 tries.'
+    container.appendChild(p1);
+    let p2 = document.createElement('p');
+    p2.className = 'intro-p';
+    p2.innerHTML = 'Each guess must be a valid 5-letter word. Hit the enter button to submit.'
+    container.appendChild(p2);
+    let p3 = document.createElement('p');
+    p3.className = 'intro-p';
+    p3.innerHTML = 'After each guess, the color of the tiles will change to show how close your guess was to the word.'
+    container.appendChild(p3);
+
+    let p4 = document.createElement('span');
+    p4.className = 'intro-p';
+    p4.innerHTML = 'Examples: '
+    container.appendChild(p4);
+
+    const wordIndex = Math.floor(Math.random() * possibleWords.length + 1);
+    const word = possibleWords[wordIndex];
+    let wordChars = word.split('');
+
+    for(let i = 0; i < 5; i++){
+        let tile = document.createElement('div');
+        tile.textContent = wordChars[i].toUpperCase();
+        console.log(tile)
+        container.appendChild(tile);
+        if (i === 0) {
+            changeTileColor(tile, '#6aaa64');
+            tile.style.border = `1px solid #6aaa64`;
+        }
+    }
+
 }

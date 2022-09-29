@@ -63,9 +63,44 @@ body {
     border-radius: 10px;
     background-color: white;
     box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
+    padding: 25px;
 
-    animation: popup 3s ease-out;
+    animation: popup 0.5s ease-out;
     
+}
+
+.intro-h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.intro-h2 {
+    font-size: 20px;
+    border-bottom: 1px solid lightgrey;
+}
+.intro-p {
+    list-style-position: outside;
+}
+.intro-p:nth-child(5) {
+    padding-bottom: 20px;
+    border-bottom: 1px solid lightgrey;
+}
+.intro  span {
+    font-weight: bold;
+}
+.intro-p:nth-child(6) {
+    display: block;
+    margin-bottom: 30px;
+}
+.intro div {
+    display: inline-block;
+    text-align: center;
+    line-height: 45px;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 3px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid black;
 }
 
 /* -------------------- Animations ----------------------- */
@@ -129,11 +164,11 @@ body {
 
 @keyframes popup {
     0% {
-        transform: scale(0) translate(-50%, -50%);
+        transform: translate(-50%, -50%) scale(0) ;
         opacity: 0;
     }
     100% {
-        transform: scale(1) translate(-50%, -50%);
+        transform: translate(-50%, -50%) scale(1) ;
         opacity: 1;
      
     }

@@ -34,6 +34,10 @@ Project 1 for General Assembly SEI
      - Animate keys to 'press' when pressed ✅
      - If guess is invalid - shake tiles side to side ✅
 
+- [ ] Create Welcome Page
+
+    - Upon loading the page, greet the user with into and rules of play     
+
 - [ ] Define Logic for Win Senario
 
     - If the player wins, stop gameplay and alert the player that they have won. 
@@ -45,11 +49,9 @@ Project 1 for General Assembly SEI
     - If the player looses, i.e runs out of guesses - stop gameplay and alert the player that they have lost.
     - Show game end screen/ highscores etc..
 
-- [ ] Create Welcome Page
 
-    - Upon loading the page, greet the user with into and rules of play
 
-### ----------- Wordle Replica Completed ----------------------------------------------------------
+### ----------- Wordle Replica Completed ------------------------------------------------
 
 - [ ] Experiment With Additional Rules
     - Add Option for timer to increase difficulty
@@ -64,7 +66,7 @@ Project 1 for General Assembly SEI
 
     ### Glitches to fix:
 
-    - Restrict the user from being able to backspace previous rows
-    - Animations don't always execute? - look into classList.toggle and @keyframes
+    - Restrict the user from being able to backspace previous rows ✅ (resolved by assigning cursur with column index)
+    - Animations don't always execute? - look into classList.toggle and @keyframes ✅ (resolved by using classList.add followed by classList.remove once animation is complete )
 
     ### Refactor/clean-up code

@@ -14,6 +14,8 @@ console.log(`Correct answer = ${answer}`);
 let answerChars = answer.split('');
 console.log(`Answer Chars = ${answerChars}`);
 
+loadTiles();
+
 // ---------------------- CONTROLLER ----------------------
 
 // Adds Event listeners to each key on the on screen keyboard
@@ -148,8 +150,10 @@ function checkWord() {
         console.log("Guess = correct")
         console.log("Player Wins!")
         setTimeout(() => {
-        alert('You Win!')
-    }, 1000);
+        if (confirm('Congratulations you win!'+'\n'+'Would you like to play again?')) {
+            window.location.reload();  
+        }
+    }, 1500);
         
     } else {
         tileIndex++;
@@ -172,6 +176,27 @@ function changeKeyColor(key, color) {
 }
 
 // -------------- Animations ---------------
+
+// Load tiles when page is refreshed
+function loadTiles() {
+    let tiles = document.getElementsByClassName('tile');
+    for (let i = 1; i <= 35; i++) {
+        if (i % 6 !== 0) {
+            let tile = document.getElementById(i);
+            if (tile.dataset.row % 2 === 0) {
+                tile.classList.add('loadTilesRight');
+                setTimeout(() => { 
+                    tile.classList.remove('loadTilesRight');
+                }, 1500);
+            } else {
+                tile.classList.add('loadTilesLeft');
+                setTimeout(() => { 
+                    tile.classList.remove('loadTilesLeft');
+                }, 1500);
+            }
+        }
+    }
+}
 
 // Pulse tiles as they are selected 
 function pulseTile(tile){
@@ -216,5 +241,5 @@ function shakeTiles(guess, tileIndex) {
         } else {
             alert(`'${guess}' is not a valid word`);
         }
-    }, 1000);
+    }, 700);
 }

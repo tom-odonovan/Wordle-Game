@@ -27,6 +27,62 @@ body {
     font-size: 35px;
     font-weight: bold;
 }
+.loadTilesLeft{
+    animation: loadTilesLeft 1s ease-out;
+}
+
+@keyframes loadTilesLeft {
+    0% {
+        position: relative;
+        left: -1000px;
+        opacity: 0;
+        transform: scale(0.1);
+        /* transform: rotate(0deg); */
+    }
+    50% {
+        position: relative;
+        left: 30px;
+        opacity: 1;
+        transform: scale(1);
+        /* transform: rotate(750deg); */
+    }
+    100% {
+        position: relative;
+        left: 0px;
+        opacity: 1;
+        transform: scale(1);
+        /* transform: rotate(720deg); */
+    }
+}
+.loadTilesRight {
+    animation: loadTilesRight 1s ease-out;
+}
+
+@keyframes loadTilesRight {
+    0% {
+        position: relative;
+        left: +1000px;
+        opacity: 0;
+        transform: scale(0.1);
+        /* transform: rotate(0deg); */
+    }
+
+    50% {
+        position: relative;
+        left: -30px;
+        opacity: 1;
+        transform: scale(1);
+        /* transform: rotate(-750deg); */
+    }
+
+    100% {
+        position: relative;
+        left: 0px;
+        opacity: 1;
+        transform: scale(1);
+        /* transform: rotate(-720deg); */
+    }
+}
 
 .pulse {
     animation: pulse 0.1s ease;

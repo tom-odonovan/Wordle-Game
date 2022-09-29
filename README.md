@@ -32,7 +32,7 @@ Project 1 for General Assembly SEI
      - As tiles are checked by the 'checkWord' function, they should flip over vertically to reveal its color ✅
      - If the player wins i.e. guess = answer, the tiles should jump up in a wave formation (Edit: this task seems to be above my skill set atm - I've compromised to getting the tiles to spin around)✅
      - Animate keys to 'press' when pressed ✅
-     - If guess is invalid - shake tiles side to side
+     - If guess is invalid - shake tiles side to side ✅
 
 - [ ] Define Logic for Win Senario
 
@@ -56,6 +56,7 @@ Project 1 for General Assembly SEI
     - 
 
 - [ ] Personalise Layout and Styling
+    - Add animation for tiles on load ✅
     - Add button to toggle 'Dark Mode'
 
      

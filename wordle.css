@@ -27,8 +27,51 @@ body {
     font-size: 35px;
     font-weight: bold;
 }
+
+.keyboard {
+    margin: 100px auto;
+}
+
+.key {
+    width: 50px;
+    height: 75px;
+    margin: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background-color: #d3d6da;
+    border-radius: 5px;
+}
+
+#enter {
+    width: 75px;
+}
+
+#backspace {
+    width: 75px;
+    font-size: 25px;
+    font-weight: lighter;
+}
+
+.intro {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 700px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
+
+    animation: popup 3s ease-out;
+    
+}
+
+/* -------------------- Animations ----------------------- */
+
 .loadTilesLeft{
-    animation: loadTilesLeft 1s ease-out;
+    animation: loadTilesLeft 1.5s ease-out;
 }
 
 @keyframes loadTilesLeft {
@@ -55,7 +98,7 @@ body {
     }
 }
 .loadTilesRight {
-    animation: loadTilesRight 1s ease-out;
+    animation: loadTilesRight 1.5s ease-out;
 }
 
 @keyframes loadTilesRight {
@@ -81,6 +124,18 @@ body {
         opacity: 1;
         transform: scale(1);
         /* transform: rotate(-720deg); */
+    }
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(0) translate(-50%, -50%);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translate(-50%, -50%);
+        opacity: 1;
+     
     }
 }
 
@@ -123,17 +178,17 @@ body {
 @keyframes press {
     0% {
         transform: scale(1);
-        background-color: #d3d6da;
+        opacity: 1;
     }
 
     50% {
         transform: scale(0.9);
-        background-color: #c4c6cb;
+        opacity: 0.8;
     }
 
     100% {
         transform: scale(1);
-        background-color: #d3d6da;
+        opacity: 1;
     }
 }
 
@@ -171,30 +226,4 @@ body {
         left: 3px;
     }
 
-}
-
-
-.keyboard {
-    margin: 100px auto;
-}
-
-.key {
-    width: 50px;
-    height: 75px;
-    margin: 3px;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    background-color: #d3d6da;
-    border-radius: 5px;
-}
-
-#enter {
-    width: 75px;
-}
-
-#backspace {
-    width: 75px;
-    font-size: 25px;
-    font-weight: lighter;
 }

@@ -2,7 +2,7 @@ let possibleWords = ["aback", "abase", "abate", "abbey", "abbot", "abhor", "abid
 
 let keys = document.getElementsByClassName('key');
 let tileIndex = 1;
-let rowIndex = 1;
+let columnIndex = 1;
 let guess = '';
 
 // Randomly select a word from array 'possible words'
@@ -15,6 +15,9 @@ let answerChars = answer.split('');
 console.log(`Answer Chars = ${answerChars}`);
 
 loadTiles();
+setTimeout(() => { 
+    //renderIntro();
+}, 1500);
 
 // ---------------------- CONTROLLER ----------------------
 
@@ -38,23 +41,25 @@ for (let keyElement of keys) {
                 } else {
                     console.log('Guess: ' + guess);
                     checkWord();
+                    columnIndex = 1;
                 }
                 break;
             case '⌫':
                 // Toggle class to animate keys as they are pressed
                 let backspace = document.getElementById('backspace');
                 keyPress(backspace);
-                if (tileIndex >= 2) {
+                if (columnIndex !== 1) {
                     guess = guess.substring(0, guess.length - 1);
                     tileIndex--;
                     let prevTile = document.getElementById(tileIndex);
                     prevTile.innerText = '';
                     prevTile.style.border = '3px solid lightgrey';
-                    console.log(tileIndex);
+                    columnIndex--;
                 }
                 break;
             default:
                 if (tileIndex % 6 !== 0) {
+                    columnIndex++;
                     tileIndex++;
                     tile.innerText = key;
                     guess = guess + key.toLowerCase();
@@ -77,6 +82,7 @@ document.addEventListener('keydown', (event) => {
 let tile = document.getElementById(tileIndex);
     if (event.key >= 'a' && event.key <= 'z') { 
         if (tileIndex % 6 !== 0) {
+            columnIndex++;
             tileIndex++;
             tile.innerText = event.key.toUpperCase();
             guess = guess + event.key.toLowerCase();
@@ -92,12 +98,13 @@ let tile = document.getElementById(tileIndex);
         // Toggle class to animate keys as they are pressed
         let backspace = document.getElementById('backspace');
         keyPress(backspace);
-        if (tileIndex >= 2) {
+        if (columnIndex !== 1) {
             guess = guess.substring(0, guess.length - 1);
             tileIndex--;
             let prevTile = document.getElementById(tileIndex);
             prevTile.innerText = '';
             prevTile.style.border = '3px solid lightgrey';
+            columnIndex--;
         }
     } else if (event.key == 'Enter'){
         // Toggle class to animate keys as they are pressed
@@ -111,6 +118,7 @@ let tile = document.getElementById(tileIndex);
         } else {
             console.log('Guess: ' + guess);
             checkWord(guess);
+            columnIndex = 1;
         }
     } 
 });
@@ -242,4 +250,13 @@ function shakeTiles(guess, tileIndex) {
             alert(`'${guess}' is not a valid word`);
         }
     }, 700);
+}
+
+
+// ----------------- Pop-ups/Additional Screens -------------------
+
+function renderIntro() {
+    let container = document.createElement('div');
+    container.className = 'intro';
+    document.body.appendChild(container);
 }

@@ -3,6 +3,7 @@ let possibleWords = ["aback", "abase", "abate", "abbey", "abbot", "abhor", "abid
 let keys = document.getElementsByClassName('key');
 let tileIndex = 1;
 let columnIndex = 1;
+let rowIndex = 1;
 let guess = '';
 
 // Randomly select a word from array 'possible words'
@@ -119,7 +120,7 @@ let tile = document.getElementById(tileIndex);
             console.log('Guess: ' + guess);
             checkWord(guess);
             columnIndex = 1;
-        }
+        } 
     } 
 });
 
@@ -158,13 +159,17 @@ function checkWord() {
         console.log("Guess = correct")
         console.log("Player Wins!")
         setTimeout(() => {
-        if (confirm('Congratulations you win!'+'\n'+'Would you like to play again?')) {
+        if (confirm('Congratulations you guessed the word in '+rowIndex+' tries!'+'\n'+'Would you like to play again?')) {
             window.location.reload();  
         }
     }, 1500);
-        
+    } else if (answer !== guess && rowIndex === 6) {
+        if (confirm(`The correct answer was '${answer.toUpperCase()}' ${'\n'}Would you like to play again?`)) {
+            window.location.reload();  
+        }
     } else {
         tileIndex++;
+        rowIndex++;
         console.log(`Tile index: ${tileIndex}`);
         guess = '';
     }

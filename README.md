@@ -40,13 +40,13 @@ Project 1 for General Assembly SEI
 
 - [ ] Define Logic for Win Senario
 
-    - If the player wins, stop gameplay and alert the player that they have won. 
+    - If the player wins, stop gameplay and alert the player that they have won. ✅
     - Additionally, ask them if they would like to play again, or share their score.
     - Perhaps include a list of highscores? or additional gameplay data such as streaks.
 
 - [ ] Define Logic for Loose Senario
 
-    - If the player looses, i.e runs out of guesses - stop gameplay and alert the player that they have lost.
+    - If the player looses, i.e runs out of guesses - stop gameplay and alert the player that they have lost. ✅
     - Show game end screen/ highscores etc..
 
 

@@ -36,7 +36,7 @@ Project 1 for General Assembly SEI
 
 - [ ] Create Welcome Page
 
-    - Upon loading the page, greet the user with into and rules of play     
+    - Upon loading the page, greet the user with into and rules of play ✅  
 
 - [ ] Define Logic for Win Senario
 

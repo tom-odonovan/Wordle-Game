@@ -266,6 +266,14 @@ function renderIntro() {
     h1.textContent = 'Welcome to Wordle!'
     container.appendChild(h1);
 
+    let close = document.createElement('button');
+    close.className = 'intro-close';
+    close.textContent = 'x'
+    h1.appendChild(close);
+    close.addEventListener('click', () => {
+        container.remove();
+    })
+
     let h2 = document.createElement('h2');
     h2.className = 'intro-h2';
     h2.textContent = 'HOW TO PLAY:'
@@ -289,19 +297,27 @@ function renderIntro() {
     p4.innerHTML = 'Examples: '
     container.appendChild(p4);
 
+    renderExample(container, 0, '#6aaa64', 'in the word and in the correct spot.');
+    renderExample(container, 1, '#c9b458', 'in the word but in the wrong spot.');
+    renderExample(container, 3, '#787c7e', 'not in the word in any spot.');
+}
+
+function renderExample(parent, index, color, str) {
     const wordIndex = Math.floor(Math.random() * possibleWords.length + 1);
-    const word = possibleWords[wordIndex];
-    let wordChars = word.split('');
+    const randWord = possibleWords[wordIndex].toUpperCase();
+    let wordChars = randWord.split('');
 
     for(let i = 0; i < 5; i++){
         let tile = document.createElement('div');
-        tile.textContent = wordChars[i].toUpperCase();
-        console.log(tile)
-        container.appendChild(tile);
-        if (i === 0) {
-            changeTileColor(tile, '#6aaa64');
-            tile.style.border = `1px solid #6aaa64`;
+        tile.textContent = wordChars[i];
+        parent.appendChild(tile);
+        if (i === index) {
+            changeTileColor(tile, color);
+            tile.style.border = `1px solid ${color}`;
         }
     }
-
+    let p5 = document.createElement('p');
+    p5.className = 'intro-p';
+    p5.innerHTML = `The letter <span>${wordChars[index]}</span> is ${str}`
+    parent.appendChild(p5);
 }

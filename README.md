@@ -2,7 +2,7 @@
 
 Project 1 for General Assembly SEI
 
-Demo here ---->  https://tom5632.github.io/Wordle-Game/
+Demo here ---->  https://tom5632.github.io/Wordle-Game/wordle.html
 
 ## Work plan
 

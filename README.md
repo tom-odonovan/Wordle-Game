@@ -2,6 +2,8 @@
 
 Project 1 for General Assembly SEI
 
+Demo here ---->  https://tom5632.github.io/Wordle-Game/
+
 ## Work plan
 
 - [ ] Create HTML contents ✅

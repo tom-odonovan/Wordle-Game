@@ -159,9 +159,7 @@ function checkWord() {
         console.log("Guess = correct")
         console.log("Player Wins!")
         setTimeout(() => {
-        if (confirm('Congratulations you guessed the word in '+rowIndex+' tries!'+'\n'+'Would you like to play again?')) {
-            window.location.reload();  
-        }
+            renderWin();
     }, 1500);
     } else if (answer !== guess && rowIndex === 6) {
         if (confirm(`The correct answer was '${answer.toUpperCase()}' ${'\n'}Would you like to play again?`)) {
@@ -262,49 +260,49 @@ function shakeTiles(guess, tileIndex) {
 
 // Renders Intro Card including Rules of Play
 function renderIntro() {
-    let container = document.createElement('div');
-    container.className = 'intro';
-    document.body.appendChild(container);
+    let introContainer = document.createElement('div');
+    introContainer.className = 'intro';
+    document.body.appendChild(introContainer);
 
     let h1 = document.createElement('h1');
     h1.className = 'intro-h1';
     h1.textContent = 'Welcome to Wordle!'
-    container.appendChild(h1);
+    introContainer.appendChild(h1);
 
     let close = document.createElement('button');
     close.className = 'intro-close';
     close.textContent = 'x'
     h1.appendChild(close);
     close.addEventListener('click', () => {
-        container.remove();
+        introContainer.remove();
     })
 
     let h2 = document.createElement('h2');
     h2.className = 'intro-h2';
     h2.textContent = 'HOW TO PLAY:'
-    container.appendChild(h2);
+    introContainer.appendChild(h2);
 
     let p1 = document.createElement('p');
     p1.className = 'intro-p';
     p1.innerHTML = 'Guess the <span>WORDLE</span> in less than 6 tries.'
-    container.appendChild(p1);
+    introContainer.appendChild(p1);
     let p2 = document.createElement('p');
     p2.className = 'intro-p';
     p2.innerHTML = 'Each guess must be a valid 5-letter word. Hit the enter button to submit.'
-    container.appendChild(p2);
+    introContainer.appendChild(p2);
     let p3 = document.createElement('p');
     p3.className = 'intro-p';
     p3.innerHTML = 'After each guess, the color of the tiles will change to show how close your guess was to the word.'
-    container.appendChild(p3);
+    introContainer.appendChild(p3);
 
     let p4 = document.createElement('span');
     p4.className = 'intro-p';
     p4.innerHTML = 'Examples: '
-    container.appendChild(p4);
+    introContainer.appendChild(p4);
 
-    renderExample(container, 0, '#6aaa64', 'in the word and in the correct spot.');
-    renderExample(container, 1, '#c9b458', 'in the word but in the wrong spot.');
-    renderExample(container, 3, '#787c7e', 'not in the word in any spot.');
+    renderExample(introContainer, 0, '#6aaa64', 'in the word and in the correct spot.');
+    renderExample(introContainer, 1, '#c9b458', 'in the word but in the wrong spot.');
+    renderExample(introContainer, 3, '#787c7e', 'not in the word in any spot.');
 }
 
 function renderExample(parent, index, color, str) {
@@ -325,4 +323,45 @@ function renderExample(parent, index, color, str) {
     p5.className = 'intro-p';
     p5.innerHTML = `The letter <span>${wordChars[index]}</span> is ${str}`
     parent.appendChild(p5);
+}
+
+function renderWin() {
+    let winContainer = document.createElement('div');
+    winContainer.className = 'win';
+    document.body.appendChild(winContainer);
+
+    let h1 = document.createElement('h1');
+    h1.className = 'win-h1';
+    h1.textContent = 'Nice Work!'
+    winContainer.appendChild(h1);
+
+    let close = document.createElement('button');
+    close.className = 'win-close';
+    close.textContent = 'x'
+    h1.appendChild(close);
+    close.addEventListener('click', () => {
+        winContainer.remove();
+    })
+
+    let p1 = document.createElement('p');
+    p1.className = 'win-p';
+    if (rowIndex === 1) {
+        p1.innerHTML = `Congratulations you guessed the word in ${rowIndex} try!`
+    } else {
+        p1.innerHTML = `Congratulations you guessed the word in ${rowIndex} tries!`
+    }
+    winContainer.appendChild(p1);
+
+    let p2 = document.createElement('p');
+    p2.className = 'win-p';
+    p2.innerHTML = 'Would you like to play again?';
+    winContainer.appendChild(p2);
+
+    let playAgain = document.createElement('button');
+    playAgain.className = 'win-playAgain';
+    playAgain.textContent = 'Play Again'
+    winContainer.appendChild(playAgain);
+    playAgain.addEventListener('click', () => {
+        window.location.reload(); 
+    })
 }

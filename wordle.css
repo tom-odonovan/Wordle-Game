@@ -68,14 +68,39 @@ body {
     animation: popup 0.5s ease-out;
     
 }
+.win {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 250px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
+    padding: 25px;
 
-.intro-h1 {
+    animation: popup 0.5s ease-out;
+}
+
+.intro-h1, .win-h1 {
     text-align: center;
     margin-bottom: 50px;
+    position: relative;
+    left: 15px;
 }
 .intro-close {
     position: relative;
-    left: 120px;
+    left: 110px;
+    top: -45px;
+    border: none;
+    background-color: white;
+    font-size: 25px;
+    font-weight: lighter;
+}
+.win-close {
+    position: relative;
+    left: 180px;
     top: -45px;
     border: none;
     background-color: white;
@@ -89,6 +114,27 @@ body {
 .intro-p {
     list-style-position: outside;
 }
+.win-p {
+    text-align: center;
+}
+.win-playAgain {
+    position: relative;
+    left: 235px;
+    top: 30px;
+    border: none;
+    font-size: 14px;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #d3d6da;
+    border-radius: 5px;
+    color: white;
+    background-color: #787c7e;
+}
+.win-playAgain:hover {
+    background-color: #6aaa64;
+    transform: scale(1.05);
+}
+
 .intro-p:nth-child(5) {
     padding-bottom: 20px;
     border-bottom: 1px solid lightgrey;

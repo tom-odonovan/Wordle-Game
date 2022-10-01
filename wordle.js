@@ -162,9 +162,7 @@ function checkWord() {
             renderWin();
     }, 1500);
     } else if (answer !== guess && rowIndex === 6) {
-        if (confirm(`The correct answer was '${answer.toUpperCase()}' ${'\n'}Would you like to play again?`)) {
-            window.location.reload();  
-        }
+        renderLoose();
     } else {
         tileIndex++;
         rowIndex++;
@@ -361,6 +359,43 @@ function renderWin() {
     playAgain.className = 'win-playAgain';
     playAgain.textContent = 'Play Again'
     winContainer.appendChild(playAgain);
+    playAgain.addEventListener('click', () => {
+        window.location.reload(); 
+    })
+}
+
+function renderLoose() {
+    let looseContainer = document.createElement('div');
+    looseContainer.className = 'loose';
+    document.body.appendChild(looseContainer);
+
+    let h1 = document.createElement('h1');
+    h1.className = 'loose-h1';
+    h1.textContent = 'Unlucky!'
+    looseContainer.appendChild(h1);
+
+    let close = document.createElement('button');
+    close.className = 'loose-close';
+    close.textContent = 'x'
+    h1.appendChild(close);
+    close.addEventListener('click', () => {
+        looseContainer.remove();
+    })
+
+    let p1 = document.createElement('p');
+    p1.className = 'loose-p';
+    p1.innerHTML = `The correct answer was <span>${answer.toUpperCase()}</span>`
+    looseContainer.appendChild(p1);
+
+    let p2 = document.createElement('p');
+    p2.className = 'loose-p';
+    p2.innerHTML = 'Would you like to play again?';
+    looseContainer.appendChild(p2);
+
+    let playAgain = document.createElement('button');
+    playAgain.className = 'loose-playAgain';
+    playAgain.textContent = 'Play Again'
+    looseContainer.appendChild(playAgain);
     playAgain.addEventListener('click', () => {
         window.location.reload(); 
     })

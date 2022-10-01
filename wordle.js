@@ -162,6 +162,8 @@ function checkWord() {
             renderWin();
     }, 1500);
     } else if (answer !== guess && rowIndex === 6) {
+        console.log("Attempts exceeded");
+        console.log("Game Over");
         renderLoose();
     } else {
         tileIndex++;
@@ -360,7 +362,7 @@ function renderWin() {
     playAgain.textContent = 'Play Again'
     winContainer.appendChild(playAgain);
     playAgain.addEventListener('click', () => {
-        window.location.reload(); 
+        location.reload(); 
     })
 }
 
@@ -397,6 +399,6 @@ function renderLoose() {
     playAgain.textContent = 'Play Again'
     looseContainer.appendChild(playAgain);
     playAgain.addEventListener('click', () => {
-        window.location.reload(); 
+        location.reload(); 
     })
 }

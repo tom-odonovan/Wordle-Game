@@ -22,6 +22,12 @@ setTimeout(() => {
 
 // ---------------------- CONTROLLER ----------------------
 
+// Open help modal on click 
+let help = document.getElementById('help');
+help.addEventListener('click', () => {
+    renderIntro();
+}) 
+
 // Adds Event listeners to each key on the on screen keyboard
 for (let keyElement of keys) {
     let key = keyElement.textContent;
@@ -130,6 +136,7 @@ function checkWord() {
     tileIndex = tileIndex - 5;
     
     for (c in answerChars) {
+        
         if (tileIndex % 6 !== 0){
             let tile = document.getElementById(tileIndex);
             // Grab text content of each tile and link it to the corresponding key
@@ -190,7 +197,6 @@ function changeKeyColor(key, color) {
 
 // Load tiles when page is refreshed
 function loadTiles() {
-    let tiles = document.getElementsByClassName('tile');
     for (let i = 1; i <= 35; i++) {
         if (i % 6 !== 0) {
             let tile = document.getElementById(i);
@@ -248,9 +254,9 @@ function shakeTiles(guess, tileIndex) {
     }
     setTimeout(() => {
         if (guess.length !== 5) {
-            alert(`Please enter a 5 letter word`);
+            //alert(`Please enter a 5 letter word`);
         } else {
-            alert(`'${guess}' is not a valid word`);
+            //alert(`'${guess}' is not a valid word`);
         }
     }, 700);
 }
@@ -262,6 +268,7 @@ function shakeTiles(guess, tileIndex) {
 function renderIntro() {
     let introContainer = document.createElement('div');
     introContainer.className = 'intro';
+    introContainer.id = 'help';
     document.body.appendChild(introContainer);
 
     let h1 = document.createElement('h1');
@@ -346,9 +353,9 @@ function renderWin() {
     let p1 = document.createElement('p');
     p1.className = 'win-p';
     if (rowIndex === 1) {
-        p1.innerHTML = `Congratulations you guessed the word in ${rowIndex} try!`
+        p1.innerHTML = `Congratulations you guessed the word in <span>${rowIndex} try!</span>`
     } else {
-        p1.innerHTML = `Congratulations you guessed the word in ${rowIndex} tries!`
+        p1.innerHTML = `Congratulations you guessed the word in <span>${rowIndex} tries!</span>`
     }
     winContainer.appendChild(p1);
 
@@ -362,7 +369,11 @@ function renderWin() {
     playAgain.textContent = 'Play Again'
     winContainer.appendChild(playAgain);
     playAgain.addEventListener('click', () => {
-        location.reload(); 
+        location.reload();
+        setTimeout(() => { 
+            let help = document.getElementById('intro');
+            help.remove();
+        }, 4000);
     })
 }
 

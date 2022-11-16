@@ -6,13 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle</title>
-    <link rel="stylesheet" href="wordle.css"/>
+    <link rel="stylesheet" href="wordle.css" />
     <script defer src="wordle.js"></script>
 </head>
 
 <body>
+    <div id="overlay"></div>
     <header id="pageHeader">
-        <h1>Wordle</h1>
+        <h1 class="title">Wordle</h1>
+        <button class="help" id="help">?</button>
     </header>
     <main>
         <div id="gameContainer">
@@ -70,7 +72,7 @@
                     <button class="key" id="y">Y</button>
                     <button class="key" id="u">U</button>
                     <button class="key" id="i">I</button>
-                    <button class="key" id="o">O</button> 
+                    <button class="key" id="o">O</button>
                     <button class="key" id="p">P</button>
                 </div>
                 <div class="row" id="key-row-2">

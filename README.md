@@ -1,6 +1,12 @@
 # Wordle-Game
 
-Project 1 for General Assembly SEI
+> Project 1 for General Assembly SEI
+</br>
+
+<div style="height: 400px;">
+  <img src="./imgs/demo-ss.png" alt="demo screenshot">
+</div>
+</br>
 
 ## Project Overview
 

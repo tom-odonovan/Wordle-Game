@@ -2,73 +2,47 @@
 
 Project 1 for General Assembly SEI
 
-Demo here ---->  https://tom-odonovan.github.io/Wordle-Game/wordle.html
+## Project Overview
 
-## Work plan
+This project was created as part of the General Assembly Software Engineering Immersive course. The aim of the project was to recreate the classic word guessing game, Wordle, using JavaScript. The game presents the player with a 5-letter word that they have to guess within a limited number of tries.
 
-- [ ] Create HTML contents ✅
-- [ ] Add basic CSS ✅
-- [ ] Define the Model
-    - Look up the list of possible 5 letter words that are playable ✅
-    - create an array containing these words ✅
+## Demo
 
-- [ ] Define basic logic 
-    1) In the original wordle game, a new word is selected every day at 00:00:00 and players have exactly 24hrs to guess that word until a new word is selected. To begin with lets select a new word every time the page is loaded from the list of possible words (this will be shown in the console).✅
+A live demo of the game can be found [here](https://tom-odonovan.github.io/Wordle-Game/wordle.html).
 
-    2) When the user clicks a key on the keyboard, the letter corresponding to the key should appear in the appropriate square in the grid ✅. Alternatively, when the user clicks the 'backspace' key, the most recent tile should be cleared. ✅
+## Features
 
-    3) When the user enters a 5 letter word and presses 'ENTER', the controller should invoke a 'checkWord()' function that firstly checks if the word is valid (i.e is included in the list of possible words) ✅ and secondly compares it to the correct answer. 
+- Randomly generated 5-letter word to guess
+- Limited number of tries
+- Colored feedback for correct and incorrect letters
+- Animated tiles
+- Option for Dark Mode
 
-        - Split the answer into an array of characters and compare each character to each corresponding tile. If they match - change the tile CSS to green. ✅ 
-        - If the answer includes the tile but not at the correct index - change the tile CSS to yellow. ✅ 
-        - Alternatively, if the answer does not contain the tile - change the tile CSS to grey. ✅
-    
-    4) The user must only be able to type a maximum of 5 letters until the word has been checked by the 'checkWord' function. Once the first guess has been checked, allow user to commence 2nd guess. ✅
+## Technologies Used
 
-        - NOTE: This prooved to be quite the challenge. How could I stop the user from guessing until the word had been checked by the 'checkword' function? At first I gave each square a unique Id corresponding to its index. If the index was a factor of 6; stop play and checkWord (Notice none of the squares have an Id divisible by 6). After the word had been checked, +1 to the tileIndex i.e. resume play. 
+- HTML
+- CSS
+- JavaScript
 
-    5) Tiles that have been checked should have their corressponding letters on the keyboard coloured accordingly to alert the user which letters to include in subsequent quesses. ✅
+## Installation
 
-- [ ] Add CSS animations 
-     - When a tile is entered it should pop out and back slightly. ✅
-     - As tiles are checked by the 'checkWord' function, they should flip over vertically to reveal its color ✅
-     - If the player wins i.e. guess = answer, the tiles should jump up in a wave formation (Edit: this task seems to be above my skill set atm - I've compromised to getting the tiles to spin around)✅
-     - Animate keys to 'press' when pressed ✅
-     - If guess is invalid - shake tiles side to side ✅
+1. Clone the repository.
+2. Open wordle.html in your web browser.
+3. Start playing!
 
-- [ ] Create Welcome Page
+## Usage
 
-    - Upon loading the page, greet the user with into and rules of play ✅  
+1. Once the game has loaded, the player is presented with a 5-letter word.
+2. The player must guess the word by typing in letters.
+3. Feedback is provided for correct and incorrect letters.
+4. The game ends when the player has used up all their guesses or correctly guessed the word.
 
-- [ ] Define Logic for Win Senario
+## Future Improvements
 
-    - If the player wins, stop gameplay and alert the player that they have won. ✅
-    - Additionally, ask them if they would like to play again, or share their score.
-    - Perhaps include a list of highscores? or additional gameplay data such as streaks.
+- Add a timer for increased difficulty.
+- Implement a system for saving and displaying high scores.
+- Allow the player to select the difficulty level.
 
-- [ ] Define Logic for Loose Senario
+## Acknowledgments
 
-    - If the player looses, i.e runs out of guesses - stop gameplay and alert the player that they have lost. ✅
-    - Show game end screen/ highscores etc..
-
-
-
-### ----------- Wordle Replica Completed ------------------------------------------------
-
-- [ ] Experiment With Additional Rules
-    - Add Option for timer to increase difficulty
-    - 
-
-- [ ] Personalise Layout and Styling
-    - Add animation for tiles on load ✅
-    - Add button to toggle 'Dark Mode'
-
-     
-
-
-    ### Glitches to fix:
-
-    - Restrict the user from being able to backspace previous rows ✅ (resolved by assigning cursur with column index)
-    - Animations don't always execute? - look into classList.toggle and @keyframes ✅ (resolved by using classList.add followed by classList.remove once animation is complete )
-
-    ### Refactor/clean-up code
+The original Wordle game was created by Jonathan Feinberg.
